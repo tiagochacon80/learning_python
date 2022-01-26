@@ -4,8 +4,8 @@
 
 print("Bank of Canada")
 
-valor_casa = int(input("Qual o valor da casa que quer comprar: "))
-salario_comprador = int(input("Qual o salario do comprador: "))
+valor_casa = float(input("Qual o valor da casa que quer comprar: "))
+salario_comprador = float(input("Qual o salario do comprador: "))
 anos_do_emprestimo = int(input("Quantidade de anos para pagamento: "))
 prestacao_mensal = (valor_casa / anos_do_emprestimo)/12
 aprovacao = salario_comprador * 0.3
