@@ -9,4 +9,6 @@ activite_physique = int(input("Combien de minutes d'activité physique avez-vous
 if alimentation < 0.2 or alimentation > 0.8:
     print('Vous ne mangez pas équilibré tous les jours! Visez 50% de fruits et légumes.')
 if activite_physique < 30:
-    print('Vous ne faites pas suffisament de soprt! Visez 30 minutes par jour en moyenne.')
+    print('Vous ne faites pas suffisament de sport! Visez 30 minutes par jour en moyenne.')
+if dejeune == 'n':
+    print('Attention! Vous ne devez pas faire du sport sur un estomac vide!')
