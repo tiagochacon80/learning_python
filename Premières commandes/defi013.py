@@ -2,4 +2,4 @@
 
 salaire = float(input('Informez votre salaire actuel: '))
 nouveau_salaire = salaire * 1.15
-print('Votre nouveau salaire est de {:.2f}$'.format(nouveau_salaire))
+print('Le salaire était de {} et le nouveau salaire est de {:.2f}$'.format(salaire,nouveau_salaire))
