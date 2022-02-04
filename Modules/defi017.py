@@ -1,8 +1,11 @@
-#hypotenuse formule a² + b² = c²
-cathete_grand = int(input("Cathete plus grand: "))
-cathete_petit = int(input("Cathete plus petit: "))
-calcule = (cathete_petit ** 2) + (cathete_grand ** 2)
-hypoteneuse = calcule**(1/2)
+#Triangle rectangle - hypotenuse formule a² + b² = c²
+print("Exemple 1")
+ca = float(input("Cathète plus grand: "))
+co = float(input("Cathète plus petit: "))
+hypoteneuse = (co ** 2 + ca ** 2) ** (1/2)
 
-print(hypoteneuse)
+print("L'hypoteneuse ira mesuré {:.2f}".format(hypoteneuse))
+
+print()
+print("Exemple 2")
 
