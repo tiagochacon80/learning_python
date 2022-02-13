@@ -4,6 +4,6 @@ prix = 0
 if distance <= 200:
     prix = distance * 0.50
     print("Le prix de billet coûtera {:.2f}$".format(prix))
-if distance > 200:
+else:
     prix = distance * 0.45
     print("Le prix de billet coûtera {:.2f}$".format(prix))
