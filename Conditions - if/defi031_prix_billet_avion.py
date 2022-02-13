@@ -1,0 +1,2 @@
+#Programme qui demande une distance d'un voyage en km et calcule le prix du billet d'avion, les couts sont 0.50$/km jusqu'à 200km et 0.45$ pour les voyages plus long
+distance = int(input("Entrez la distance de votre voyage: "))
