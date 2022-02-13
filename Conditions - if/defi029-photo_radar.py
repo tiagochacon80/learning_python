@@ -2,8 +2,8 @@
 vitesse = float(input("Quelle est la vitesse du véhicule? "))
 amende = 0
 if vitesse > 80:
-    print("ATTENTION!! Vous avez dépassé la limite de vitesse permi qui est de 80km!!!")
+    print("\33[31mATTENTION!! Vous avez dépassé la limite de vitesse permi qui est de 80km!!!")
     amende = round((vitesse - 80) * 7)
     print(f"Vous devez payer une amende de {amende}$!")
 else:
-    print("Bonne journée, conduisez prudemment")
+    print("\33[34mBonne journée, conduisez prudemment.")
