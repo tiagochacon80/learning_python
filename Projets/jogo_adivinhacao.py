@@ -3,7 +3,7 @@ from random import randint
 print("Bienvenu au jeu de devinette!")
 print("*********************************")
 
-numero_secreto = randint(1, 100)
+nombre_secret = randint(1, 100)
 tentativas = 4
 points = 1000
 
@@ -25,9 +25,9 @@ for rodada in range(1, tentativas + 1):
     if(chute < 1 or chute > 100):
        print("Numero invalido, digite de 1 a 100")
 
-    acertou = chute == numero_secreto
-    maior = chute > numero_secreto
-    menor = chute < numero_secreto
+    acertou = chute == nombre_secret
+    maior = chute > nombre_secret
+    menor = chute < nombre_secret
 
     if(acertou):
         print("Parabéns voce acertou e fez {} pontos".format(points))
@@ -37,7 +37,7 @@ for rodada in range(1, tentativas + 1):
             print("Errou!!! O numero é maior que", chute)
         elif(maior):
             print("Errou!!! O numero é menor que", chute)
-        points_perdu = abs(numero_secreto - chute)
+        points_perdu = abs(nombre_secret - chute)
         points = points - points_perdu
 
     rodada = rodada + 1
