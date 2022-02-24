@@ -15,6 +15,6 @@ print(f"Lista B: {b}")
 
 a = [5, 9, 10, 11]
 b = a[:]# Aqui ele iria criar uma copia da lista
-b[2] = 8# Na copia ele ira trocar o valor da posiçao [2]
+b[2] = 8# Na copia ele ira trocar o valor da posiçao [2], assim eles nao tem nenhma ligaçao
 print(f"Lista A: {a}")
 print(f"Lista B: {b}")
