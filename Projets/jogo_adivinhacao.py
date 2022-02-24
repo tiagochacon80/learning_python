@@ -4,7 +4,7 @@ print("Bienvenu au jeu de devinette!")
 print("*********************************")
 
 nombre_secret = randint(1, 100)
-tentatives = 4
+tentatives = 0
 points = 1000
 
 print("Voici les niveaux de difficultés")
