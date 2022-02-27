@@ -27,25 +27,22 @@ def trouver_paire_la_plus_frequente(chaine):
 
     """
 
-    # Votre code ici
     mon_dico = {}
     for i in range(len(chaine)-1):
-        pair = chaine[i:i+2]
-
-        if pair in mon_dico:
-            mon_dico[pair] += 1
+        paire = chaine[i:i+2]
+        if paire in mon_dico:
+            mon_dico[paire] += 1
         else:
-            mon_dico[pair] = 1
+            mon_dico[paire] = 1
 
     max_conteur = 0
-    max_pair = None
-    for pair, conteur in mon_dico.items():
+    max_paire = None
+    for paire, conteur in mon_dico.items():
         if conteur > max_conteur:
             max_conteur = conteur
-            max_pair = pair
+            max_paire = paire
 
-    return max_pair
-
+    return max_paire
 
 
 def remplacer_paire_par_symbole(chaine, paire, symbole):
@@ -67,7 +64,9 @@ def remplacer_paire_par_symbole(chaine, paire, symbole):
 
     """
 
-    # Votre code ici
+    chaine = chaine.replace(paire, symbole)
+    return chaine
+
 
 
 def afficher_progression(ratio):
@@ -103,8 +102,14 @@ def compression_par_paires(chaine):
         dict: Le dictionnaire de paires.
 
     """
-
-    # Votre code ici
+    dico_de_paire = {}
+    i = 0
+    while i < len(SYMBOLES) and len(chaine) > 1:
+        paire = trouver_paire_la_plus_frequente(chaine)
+        dico_de_paire[SYMBOLES[i]] = paire
+        chaine = remplacer_paire_par_symbole(chaine, paire, SYMBOLES[i])
+        i += 1
+    return chaine, dico_de_paire
 
 
 def compresser(fichier_original, fichier_compresse):
@@ -119,7 +124,8 @@ def compresser(fichier_original, fichier_compresse):
         fichier_compresse (str): Le nom du fichier où écrire le contenu compressé
     """
     print("Compression en cours...")
-    # Votre code ici
+    lire_fichier_brut(nom_fichier)
+    lire_fichier_compresse(nom_fichier)
     print("Compression complétée!")
 
 
