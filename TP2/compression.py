@@ -124,8 +124,8 @@ def compresser(fichier_original, fichier_compresse):
         fichier_compresse (str): Le nom du fichier où écrire le contenu compressé
     """
     print("Compression en cours...")
-    lire_fichier_brut(nom_fichier)
-    lire_fichier_compresse(nom_fichier)
+    texte = lire_fichier_brut(fichier_original)
+    ecrire_fichier_compresse(texte, fichier_compresse)
     print("Compression complétée!")
 
 

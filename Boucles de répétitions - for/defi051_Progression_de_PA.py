@@ -1,8 +1,8 @@
 print("="*30)
 print("     10 thermes d'un PA    ")
 print("="*30)
-premier = int(input("Premier therme: "))
-raison = int(input("Raison: "))
+premier = 0 #int(input("Premier therme: "))
+raison = 2 #int(input("Raison: "))
 #Version 1
 for i in range(0, 10):
     print(f"{premier + raison * i}", end='- ')
