@@ -125,7 +125,8 @@ def compresser(fichier_original, fichier_compresse):
     """
     print("Compression en cours...")
     texte = lire_fichier_brut(fichier_original)
-    ecrire_fichier_compresse(texte, fichier_compresse)
+    chaine, dico = compression_par_paires(texte)
+    ecrire_fichier_compresse(fichier_compresse, chaine, dico)
     print("Compression complétée!")
 
 
