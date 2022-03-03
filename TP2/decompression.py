@@ -24,8 +24,8 @@ def remplacer_symbole_par_paire(chaine, paire, symbole):
 
     """
 
-    chaine = chaine.replace(symbole, paire)
-    return chaine
+    return chaine.replace(symbole, paire)
+
 
 
 def decompression_par_paires(chaine, dictionnaire_paires):
@@ -43,13 +43,14 @@ def decompression_par_paires(chaine, dictionnaire_paires):
         Returns:
             str: La chaîne décompressée.
         """
-    dico_paire = list(dictionnaire_paires.keys())
-    val_dic = list(dictionnaire_paires.values())
 
-    for s in SYMBOLES[::-1]:
-        if chaine.count(s) > 0:
-            position = dico_paire.index(s)
-            chaine = remplacer_symbole_par_paire(chaine, val_dic[position], s)
+    SYMBOLES = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    for i in SYMBOLES[::-1]:
+        if i in dictionnaire_paires:
+            chaine = remplacer_symbole_par_paire(chaine, dictionnaire_paires[i], i)
+
+    return chaine
 
 
 def decompresser(fichier_compresse, fichier_decompresse):
@@ -65,7 +66,9 @@ def decompresser(fichier_compresse, fichier_decompresse):
     """
 
     print("Décompression en cours...")
-    # Votre code ici
+    chaine_compressee, dictionnaire_paires = lire_fichier_compresse(fichier_compresse)
+    chaine_decompressee = decompression_par_paires(chaine_compressee, dictionnaire_paires)
+    ecrire_fichier_decompresse(fichier_decompresse, chaine_decompressee)
     print("Décompression complétée!")
 
 
