@@ -1,6 +1,6 @@
-def secteur(texte): #fonction avec un paramètre
+def secteur(txt): #fonction avec un paramètre
     print("-"*30) #quantité de fois que le "-" sera répeter
-    print(texte) #Le paramètre qui on a indiqué dans la fonction
+    print(txt) #Le paramètre qui on a indiqué dans la fonction
     print("-"*30)
 
 
