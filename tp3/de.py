@@ -26,6 +26,14 @@ class De:
         """
         # VOTRE CODE ICI
 
+        # tirage au hasard de la valeur du dé a 6 faces
+        rand_faces = randint(1, 6)
+
+        # Affichage valeur pigée
+        self.afficher_valeur(rand_faces)
+
+        return rand_faces
+
     def afficher_valeur(self, valeur):
         """
         Cette méthode affiche la valeur donnée en paramètre. Si le dé a 6 faces, on
@@ -35,3 +43,7 @@ class De:
             valeur: la valeur pigée à afficher
         """
         afficher(chr(9855 + valeur) if self.nb_faces == 6 else valeur, end=' ')
+
+
+
+

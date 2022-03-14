@@ -156,6 +156,13 @@ class Carte:
 
         """
         # VOTRE CODE ICI
+        cases_joueur = {}
+        for case in self.cases.values():
+            if case.appartenance == joueur:
+                cases_joueur[case.coordonnees] = case
+
+        return cases_joueur
+
 
     def obtenir_cases_ennemies(self, joueur):
         """
@@ -170,6 +177,14 @@ class Carte:
 
         """
         # VOTRE CODE ICI
+        cases_ennemies = {}
+        list_cases_joueur = list(self.obtenir_cases_joueur(joueur).values())
+        for case in self.cases.values():
+            if case not in list_cases_joueur:
+                cases_ennemies[case.coordonnees] = case
+
+        return cases_ennemies
+
 
     def obtenir_cases_non_pleines(self, joueur):
         """
@@ -185,6 +200,13 @@ class Carte:
 
         """
         # VOTRE CODE ICI
+        cases_joueur_non_pleines = {}
+        for case in self.obtenir_cases_joueur(joueur).values():
+            if not case.est_pleine():
+                cases_joueur_non_pleines[case.coordonnees] = case
+
+        return cases_joueur_non_pleines
+
 
     def cases_disponibles_pour_defense(self, joueur, case_attaque):
         """
@@ -202,6 +224,18 @@ class Carte:
 
         """
         # VOTRE CODE ICI
+        cases_defense = {}
+        voisin = []
+        for case in self.cases.values():
+            if case_attaque == case.coordonnees:
+                voisin = case.voisins
+
+        for case in self.obtenir_cases_ennemies(joueur).values():
+            if case in voisin:
+                cases_defense[case.coordonnees] = case
+
+        return cases_defense
+
 
     def cases_disponibles_pour_attaque(self, joueur):
         """
@@ -219,9 +253,19 @@ class Carte:
 
         """
         # VOTRE CODE ICI
+        cases_attaque = {}
+        for case in self.obtenir_cases_joueur(joueur).values():
+            if case.nombre_de_des() >= 2 and self.cases_disponibles_pour_defense(joueur, case.coordonnees):
+                cases_attaque[case.coordonnees] = case
+
+        return cases_attaque
+
+
 
     def tout_deselectionner(self):
         """
         Cette méthode désélectionne toutes les cases (Case.deselectionner).
         """
         # VOTRE CODE ICI
+        for case in self.cases.values():
+            case.deselectionner()

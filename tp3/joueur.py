@@ -40,6 +40,13 @@ class Joueur:
             Case: La case sélectionnée pour attaque. None si la stratégie retourne None
         """
         # VOTRE CODE ICI
+        case = self.strategie_selection_attaquant(carte.cases_disponibles_pour_attaque(self))
+
+        if case:
+            carte.cases[case].selectionner_pour_attaque()
+
+        return case
+
 
     def selectionner_defenseur(self, carte, case_attaquante):
         """
@@ -57,6 +64,12 @@ class Joueur:
             Case: La case sélectionnée pour défense. None si la stratégie retourne None
         """
         # VOTRE CODE ICI
+        case = self.strategie_selection_defenseur(carte.cases_disponibles_pour_defense(self, case_attaquante),case_attaquante)
+
+        if case:
+            carte.cases[case].selectionner_pour_defense()
+
+        return case
 
     def strategie_selection_attaquant(self, cases_disponibles):
         raise NotImplementedError("Les classes enfant doivent implémenter cette méthode. ")
@@ -72,6 +85,7 @@ class Joueur:
             nouveaux_des (list): La liste de dés à ajouter.
         """
         # VOTRE CODE ICI
+        self.des_en_surplus += nouveaux_des
 
     def distribuer_surplus(self, carte):
         """
@@ -96,6 +110,10 @@ class Joueur:
 
         """
         # VOTRE CODE ICI
+        case = choice(cases_non_pleines)
+        de = self.des_en_surplus.pop()
+        case.ajouter_un_de(de)
+
 
     def est_elimine(self, carte):
         """
@@ -110,12 +128,17 @@ class Joueur:
 
         """
         # VOTRE CODE ICI
+        if carte.obtenir_cases_non_pleines(self.couleur):
+            return True
+        else:
+            return False
 
     def afficher_information(self):
         """
         Cette méthode affiche (afficheur.afficher) le type du joueur colorisé avec sa couleur.
         """
         # VOTRE CODE ICI
+        afficher(self.type_joueur, self.couleur)
 
     def afficher_tour(self):
         """
@@ -123,6 +146,8 @@ class Joueur:
         nombre de dés en surplus, le tout colorisé avec sa couleur.
         """
         # VOTRE CODE ICI
+        afficher(f"Au tour du joueur {self.couleur}", self.couleur)
+
 
     def afficher_victoire(self):
         """
@@ -130,3 +155,4 @@ class Joueur:
         avec son nom (couleur), colorisé avec sa couleur.
         """
         # VOTRE CODE ICI
+        afficher(f"Victoire du joueur {self.couleur} !!!", self.couleur)

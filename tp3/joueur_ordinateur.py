@@ -41,6 +41,13 @@ class JoueurOrdinateur(Joueur):
 
         """
         # VOTRE CODE ICI
+        case_valeur_acceptees = {}
+        for case in cases.values():
+            if case.nombre_de_des() in valeurs_acceptees:
+                case_valeur_acceptees[case.coordonnees] = case
+
+        return case_valeur_acceptees
+
 
     def trouver_nb_des_optimal(self, cases, minimum=False):
         """
@@ -62,6 +69,20 @@ class JoueurOrdinateur(Joueur):
             Case: la case sélectionnée
         """
         # VOTRE CODE ICI
+        compare_valeur = 0
+        case = None
+        for nb in cases.values():
+            if minimum:
+                if compare_valeur <= nb.nombre_de_des():
+                    compare_valeur = nb.nombre_de_des()
+                    case = nb
+            else:
+                if nb.nombre_de_des() >= compare_valeur:
+                    compare_valeur = nb.nombre_de_des()
+                    case = nb
+        #print(case)
+        return case
+
 
     def strategie_selection_attaquant(self, cases_disponibles):
         """

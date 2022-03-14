@@ -7,7 +7,6 @@ Pour cette classe, vous êtes encouragé à créer vos propres méthodes afin de
 from afficheur import afficher, demander
 from joueur import Joueur
 
-
 class JoueurHumainConsole(Joueur):
     def __init__(self, couleur):
         """
@@ -47,6 +46,33 @@ class JoueurHumainConsole(Joueur):
 
         """
         # VOTRE CODE ICI
+        list_case_disponible = list(cases_disponibles)
+        coordonnees = demander("Entrez les coordonnées de la case en attaque au format x,y "
+                               "(ou rien pour terminer le tour): ")
+
+        if coordonnees != "":
+            coordonnees = coordonnees.strip().replace(",", "")
+            case = (int(coordonnees[0]), int(coordonnees[1]))
+
+            while case not in list_case_disponible and coordonnees != "":
+                afficher(f"Vous avez le choix parmi les cases suivantes : {list_case_disponible} ")
+
+                coordonnees = demander("Entrez les coordonnées de la case en attaque au format x,y "
+                                       "(ou rien pour terminer le tour): ")
+
+                if coordonnees != "":
+                    coordonnees = coordonnees.strip().replace(",", "")
+                    case = (int(coordonnees[0]), int(coordonnees[1]))
+
+            if case in list_case_disponible:
+                return case
+            elif coordonnees == "":
+                return None
+
+        else:
+            return None
+
+
 
     def strategie_selection_defenseur(self, cases_disponibles, case_attaquante):
         """
@@ -81,3 +107,28 @@ class JoueurHumainConsole(Joueur):
 
         """
         # VOTRE CODE ICI
+        list_case_disponible = list(cases_disponibles)
+        coordonnees = demander("Entrez les coordonnées de la case en defense au format x,y "
+                               "(ou rien pour terminer le tour): ")
+
+        if coordonnees != "":
+            coordonnees = coordonnees.strip().replace(",", "")
+            case = (int(coordonnees[0]), int(coordonnees[1]))
+
+            while (case not in list_case_disponible) and (coordonnees != ""):
+                afficher(f"Vous avez le choix parmi les cases suivantes : {list_case_disponible} ")
+
+                coordonnees = demander("Entrez les coordonnées de la case en defense au format x,y "
+                                       "(ou rien pour terminer le tour): ")
+
+                if coordonnees != "":
+                    coordonnees = coordonnees.strip().replace(",", "")
+                    case = (int(coordonnees[0]), int(coordonnees[1]))
+
+            if case in list_case_disponible:
+                return case
+            elif coordonnees == "":
+                return None
+
+        else:
+            return None

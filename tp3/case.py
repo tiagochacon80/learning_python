@@ -1,7 +1,7 @@
 """
 Contient la classe Case, qui correspond à une case du jeu.
 """
-
+import afficheur
 from afficheur import afficher
 from de import De
 
@@ -39,6 +39,8 @@ class Case:
             joueur (Joueur): Le joueur
         """
         # VOTRE CODE ICI
+        self.appartenance = joueur
+
 
     def definir_voisins(self, voisins):
         """
@@ -48,6 +50,7 @@ class Case:
             voisins (list): La liste des voisins à donner à la case
         """
         # VOTRE CODE ICI
+        self.voisins = voisins.copy()
 
     def nombre_de_des(self):
         """
@@ -57,6 +60,7 @@ class Case:
             int: Le nombre de dés
         """
         # VOTRE CODE ICI
+        return len(self.des)
 
     def ajouter_un_de(self, de):
         """
@@ -79,24 +83,28 @@ class Case:
             des (list): Les nouveaux dés
         """
         # VOTRE CODE ICI
+        self.des = des.copy()
 
     def selectionner_pour_attaque(self):
         """
         Cette méthode change le mode de la case pour le mode 'attaque'
         """
         # VOTRE CODE ICI
+        self.mode = 'attaque'
 
     def selectionner_pour_defense(self):
         """
         Cette méthode change le mode de la case pour le mode 'defense'
         """
         # VOTRE CODE ICI
+        self.mode = 'defense'
 
     def deselectionner(self):
         """
         Cette méthode change le mode de la case pour le mode 'attente'
         """
         # VOTRE CODE ICI
+        self.mode = 'attente'
 
     def est_pleine(self):
         """
@@ -107,6 +115,7 @@ class Case:
             bool: True si le nombre de dés est égal au maximum, False sinon
         """
         # VOTRE CODE ICI
+        return self.nombre_de_des() == MAX_DES_PAR_CASE
 
     def lancer_des(self):
         """
@@ -117,6 +126,14 @@ class Case:
             int: La somme des dés
         """
         # VOTRE CODE ICI
+        somme_des = 0
+        for _ in range(self.nombre_de_des()):
+            somme_des += self.lancer_des()
+
+        afficher(str(somme_des))
+
+        return somme_des
+
 
     def afficher(self):
         """
