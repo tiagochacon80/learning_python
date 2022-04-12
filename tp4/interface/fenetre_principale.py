@@ -2,8 +2,8 @@
 Module contenant la classe FenetrePrincipale et ses classes utilitaires FrameAttaque
 et FrameJoueurActif. Cette fenêtre permet de jouer au jeu.
 """
-
-from tkinter import Tk, Frame, Button, Label, messagebox
+import tkinter
+from tkinter import Tk, Frame, Button, Label, messagebox, Scale, DoubleVar
 
 from guerre_des_des_tp3.afficheur import desactiver_affichage, couleurs_interface
 from guerre_des_des_tp3.carte_autogeneree import CarteAutogeneree
@@ -84,11 +84,13 @@ class FrameJoueurActif(Frame):
         self.label_des_surplus_fixe = Label(self, text="Dés en surplus: ")
         self.label_des_surplus_variable = Label(self, text="0")
         self.bouton = Button(self, text="-", width=20, command=self.clic_bouton)
-
+        self.double_var = DoubleVar()
+        self.scale = Scale(self, variable=self.double_var, from_=10, to=500, orient=tkinter.HORIZONTAL)
         self.label_nom_joueur.grid(row=0, column=0)
         self.label_des_surplus_fixe.grid(row=1, column=0)
         self.label_des_surplus_variable.grid(row=1, column=1)
         self.bouton.grid(row=1, column=2)
+        self.scale.grid(row=2, column=2)
 
     def populer(self, joueur):
         """
@@ -144,12 +146,14 @@ class FenetrePrincipale(Tk):
         self.label_bienvenue.grid(row=0, column=0, padx=10, pady=10)
         self.bouton_commencer.grid(row=1, column=0, padx=10, pady=10)
 
+
     def lancer_fenetre_introduction(self):
         fenetre_introduction = FenetreIntroduction(self)
         self.wait_window(fenetre_introduction)
         carte, joueurs = fenetre_introduction.obtenir_donnees()
         if carte is not None and joueurs is not None:
             self.demarrer(carte, joueurs)
+
 
     def demarrer(self, carte, joueurs):
         """
@@ -368,4 +372,8 @@ class FenetrePrincipale(Tk):
         gagnant = self.guerre_des_des.determiner_gagnant()
         messagebox.showinfo("Fin de la partie", "Victoire du joueur " + couleurs_interface[gagnant.couleur])
         self.canvas_carte.permettre_clics(None)
-        self.frame_joueur.populer(gagnant)
+        self.frame_joueur.populer(gagnant)           
+        self.destroy()
+        self.__init__()
+
+
