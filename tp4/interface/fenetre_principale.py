@@ -85,12 +85,16 @@ class FrameJoueurActif(Frame):
         self.label_des_surplus_variable = Label(self, text="0")
         self.bouton = Button(self, text="-", width=20, command=self.clic_bouton)
         self.double_var = DoubleVar()
-        self.scale = Scale(self, variable=self.double_var, from_=10, to=500, orient=tkinter.HORIZONTAL)
+        self.scale = Scale(self, variable=self.double_var, from_=10, to=500, orient=tkinter.HORIZONTAL, command=self.update_TEMPS_ATTENTE)
         self.label_nom_joueur.grid(row=0, column=0)
         self.label_des_surplus_fixe.grid(row=1, column=0)
         self.label_des_surplus_variable.grid(row=1, column=1)
         self.bouton.grid(row=1, column=2)
         self.scale.grid(row=2, column=2)
+
+    def update_TEMPS_ATTENTE(self, event):
+        global TEMPS_ATTENTE
+        TEMPS_ATTENTE = int(self.double_var.get())
 
     def populer(self, joueur):
         """
