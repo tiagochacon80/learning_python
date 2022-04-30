@@ -225,7 +225,6 @@ class Carte:
         """
         # VOTRE CODE ICI
         cases_defense = {}
-
         for case in self.obtenir_cases_ennemies(joueur).values():
             if type(case_attaque) == tuple:
                 if case in self.cases[case_attaque].voisins:
@@ -233,7 +232,8 @@ class Carte:
             else:
                 if case in case_attaque.voisins:
                     cases_defense[case.coordonnees] = case
-
+                    if case_attaque.mode == "attaque":
+                        case.mode = "defense"
         return cases_defense
 
 
@@ -257,7 +257,7 @@ class Carte:
         for case in self.obtenir_cases_joueur(joueur).values():
             if case.nombre_de_des() >= 2 and self.cases_disponibles_pour_defense(joueur, case.coordonnees):
                 cases_attaque[case.coordonnees] = case
-
+                case.mode = "disponible"
         return cases_attaque
 
 

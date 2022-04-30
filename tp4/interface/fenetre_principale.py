@@ -272,6 +272,8 @@ class FenetrePrincipale(Tk):
                 self.deroulement_fin_selection_attaquant(attaquant)
             else:
                 self.frame_joueur.permettre_fin_tour(lambda _: self.deroulement_fin_selection_attaquant(None))
+                self.carte.cases_disponibles_pour_attaque(self.joueur_actuel)
+                self.canvas_carte.dessiner_canvas()
                 self.canvas_carte.permettre_clics(lambda coor:
                                                   self.deroulement_choix_attaquant_humain(coor))
 
@@ -317,6 +319,10 @@ class FenetrePrincipale(Tk):
             defenseur = self.joueur_actuel.selectionner_defenseur(self.carte, attaquant)
             self.redessiner(self.deroulement_choix_defenseur_fin(attaquant, defenseur))
         else:
+            for case in self.carte.obtenir_cases_joueur(self.joueur_actuel).values():
+                if case.mode == "disponible": case.mode = "attends"
+            self.carte.cases_disponibles_pour_defense(self.joueur_actuel, attaquant)
+            self.canvas_carte.dessiner_canvas()
             suite = lambda coor_def: self.deroulement_choix_defenseur_humain(attaquant, coor_def)
             self.frame_joueur.permettre_annuler_selection(suite)
             self.canvas_carte.permettre_clics(suite)

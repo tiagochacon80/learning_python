@@ -9,11 +9,11 @@ cartes auto-générées de taille 5x5 avec 8 trous.
 
 from random import shuffle
 
-from solution.guerre_des_des_tp3.afficheur import desactiver_affichage
-from solution.guerre_des_des_tp3.carte_autogeneree import CarteAutogeneree
-from solution.guerre_des_des_tp3.guerre_des_des import GuerreDesDes
-from solution.guerre_des_des_tp3.joueur_ordinateur import JoueurOrdinateur
-from solution.ia.joueur_ordinateur_ameliore import JoueurOrdinateurAmeliore
+from guerre_des_des_tp3.afficheur import desactiver_affichage
+from guerre_des_des_tp3.carte_autogeneree import CarteAutogeneree
+from guerre_des_des_tp3.guerre_des_des import GuerreDesDes
+from guerre_des_des_tp3.joueur_ordinateur import JoueurOrdinateur
+from ia.joueur_ordinateur_ameliore import JoueurOrdinateurAmeliore
 
 LARGEUR = 5
 HAUTEUR = 5

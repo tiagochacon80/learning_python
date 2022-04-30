@@ -81,11 +81,11 @@ class CanvasCarte(Canvas):
         for (x, y), case in self.carte.cases.items():
             font_size = 20
             if case.mode == 'attaque':
-                outline, width = 'gray', 4
+                outline, width = 'grey', 4
             elif case.mode == 'defense':
-                outline, width = 'lightgray', 4
+                outline, width = 'orange', 4
             elif case.mode == 'disponible':
-                outline, width = 'black', 3
+                outline, width = 'red', 3
             else:
                 outline, width = 'black', 1
 
