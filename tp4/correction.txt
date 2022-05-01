@@ -2,23 +2,21 @@
 Fichier de correction TP4
 **************************
 
-Étudiant 1
----------------
-Prénom et Nom:
-Numéro de dossier (NI):
-Temps de réalisation: 
+Prénom et Nom: Oumar Diakité
+Numéro de dossier (NI): 536957351
+Temps de réalisation: 3 jours
 
 Étudiant 2
 ---------------
-Prénom et Nom:
-Numéro de dossier (NI):
-Temps de réalisation: 
+Prénom et Nom: Tiago Celani Chacon
+Numéro de dossier (NI): 111235841
+Temps de réalisation: 3 jours
 
 Étudiant 3
 ---------------
-Prénom et Nom:
-Numéro de dossier (NI):
-Temps de réalisation: 
+Prénom et Nom: MATAR JACQUES KOUYATE
+Numéro de dossier (NI): 536829747
+Temps de réalisation: 3 jours
 
 
 ************************************************************************************

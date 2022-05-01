@@ -14,7 +14,8 @@ MAX_DES_PAR_CASE = 8
 FORMATS = {
     'attente': '[ {} ]',
     'attaque': 'X {} X',
-    'defense': '< {} >'
+    'defense': '< {} >',
+    'disponible': ''
 }
 
 

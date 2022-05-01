@@ -18,7 +18,7 @@ from ia.joueur_ordinateur_ameliore import JoueurOrdinateurAmeliore
 LARGEUR = 5
 HAUTEUR = 5
 N_TROUS = 8
-N_SIMULATIONS = 100
+N_SIMULATIONS = 10000
 
 desactiver_affichage()
 
@@ -48,10 +48,13 @@ def afficher_progression(ratio):
 
 for i in range(N_SIMULATIONS):
     afficher_progression(i / N_SIMULATIONS)
-    joueurs = [JoueurOrdinateurAmeliore(VOTRE_IA), JoueurOrdinateur(IA_PROF_1), JoueurOrdinateur(IA_PROF_2)]
-    shuffle(joueurs)
     carte = CarteAutogeneree(LARGEUR, HAUTEUR, N_TROUS)
+    joueurs = [JoueurOrdinateurAmeliore(VOTRE_IA, carte),
+               JoueurOrdinateur(IA_PROF_1),
+               JoueurOrdinateur(IA_PROF_2)]
     carte.diviser_territoires(joueurs)
+    shuffle(joueurs)
+
     gdd = GuerreDesDes(joueurs, carte)
     gdd.deroulement_global()
     victoires[gdd.determiner_gagnant().couleur] += 1
@@ -63,3 +66,4 @@ print("\nVotre IA a remporté {:.1f}% des parties!".format(pourcentage_victoire)
 print("Cela vous donnera environ la note de {} / 25 pour cette section. ".format(
     max(min(2 * pourcentage_victoire - 55, 25), 0)
 ))
+
